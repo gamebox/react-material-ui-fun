@@ -5,8 +5,9 @@ import replace from 'rollup-plugin-replace';
 
 export default {
   entry: 'index.js',
-  format: 'cjs',
+  format: 'iife',
   dest: 'dist/bundle.js', // equivalent to --output
+  treeshake: true,
   plugins: [
     babel({
       exclude: 'node_modules/**'
@@ -16,6 +17,7 @@ export default {
       main: true
     }),
     cjs({
+      include: 'node_modules/**',
       sourceMaps: false
     }),
     replace({
